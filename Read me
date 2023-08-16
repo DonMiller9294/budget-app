@@ -1,0 +1,24 @@
+# Personal Finance Chatbot
+
+
+
+A simple Personal Finance Chatbot created using Python's Tkinter library. The chatbot assists users in managing their personal finances by tracking expenses, suggesting budgeting strategies, and providing basic financial advice.
+
+## Features
+
+- Interactive GUI for user interaction.
+- Add and track expenses.
+- Receive budgeting suggestions based on expenses.
+- Basic personalization through entering a user's name.
+
+## Getting Started
+
+These instructions will help you get a copy of the project up and running on your local machine.
+
+### Prerequisites
+
+- Python 3.x
+
+### Installation
+
+
