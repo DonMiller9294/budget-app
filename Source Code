@@ -1,0 +1,62 @@
+import tkinter as tk
+from tkinter import messagebox
+
+class FinanceChatbot:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Personal Finance Chatbot")
+        
+        self.user_name = ""
+        self.expenses = []
+        
+        self.frame = tk.Frame(root, bg="black")
+        self.frame.pack(fill=tk.BOTH, expand=True)
+        
+        self.welcome_label = tk.Label(self.frame, text="Welcome to Personal Finance Chatbot!", bg="black", fg="white")
+        self.welcome_label.pack(padx=10, pady=10)
+        
+        self.name_label = tk.Label(self.frame, text="Enter your name:", bg="black", fg="white")
+        self.name_label.pack(padx=10, pady=5)
+        
+        self.name_entry = tk.Entry(self.frame)
+        self.name_entry.pack(padx=10, pady=5)
+        
+        self.name_button = tk.Button(self.frame, text="Start", command=self.set_name)
+        self.name_button.pack(padx=10, pady=10)
+        
+        self.expense_label = tk.Label(self.frame, text="Enter an expense:", bg="black", fg="white")
+        self.expense_label.pack(padx=10, pady=5)
+        
+        self.expense_entry = tk.Entry(self.frame)
+        self.expense_entry.pack(padx=10, pady=5)
+        
+        self.expense_button = tk.Button(self.frame, text="Add Expense", command=self.add_expense)
+        self.expense_button.pack(padx=10, pady=10)
+        
+        self.suggest_button = tk.Button(self.frame, text="Suggest Budgeting", command=self.suggest_budgeting)
+        self.suggest_button.pack(padx=10, pady=5)
+        
+    def set_name(self):
+        self.user_name = self.name_entry.get()
+        self.welcome_label.config(text=f"Hello, {self.user_name}!")
+    
+    def add_expense(self):
+        expense = self.expense_entry.get()
+        if expense:
+            self.expenses.append(expense)
+            messagebox.showinfo("Expense Added", f"Expense '{expense}' added successfully.")
+            self.expense_entry.delete(0, tk.END)
+            
+    def suggest_budgeting(self):
+        total_expenses = len(self.expenses)
+        if total_expenses > 0:
+            suggestion = f"Based on your {total_expenses} expenses, consider creating a budget plan."
+            messagebox.showinfo("Budgeting Suggestion", suggestion)
+        else:
+            messagebox.showwarning("No Expenses", "You haven't added any expenses yet.")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.configure(bg="black")
+    app = FinanceChatbot(root)
+    root.mainloop()
